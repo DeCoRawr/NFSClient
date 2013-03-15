@@ -7,7 +7,7 @@ It's written in C# language.
 
 ## Look
 
-![Main Window of the application ](doc/imgs/MainWindow.jpg)
+![Main Window of the application ](docs/imgs/MainWindow.jpg)
 
 
 ## Tested
