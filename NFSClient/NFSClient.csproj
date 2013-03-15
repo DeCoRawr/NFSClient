@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{090C08C3-CC29-4983-8CC2-C47542A5E61A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NFSClient</RootNamespace>
+    <AssemblyName>NFSClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>NFS_Linux.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddServer.Designer.cs">
+      <DependentUpon>AddServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dokan\DokanNet.cs" />
+    <Compile Include="Dokan\DokanOperations.cs" />
+    <Compile Include="Dokan\NFSCache.cs" />
+    <Compile Include="Dokan\Operations.cs" />
+    <Compile Include="Dokan\Proxy.cs" />
+    <Compile Include="Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Progress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Progress.Designer.cs">
+      <DependentUpon>Progress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewFolder.Designer.cs">
+      <DependentUpon>NewFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NFS.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\CloseStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\CreateStub.cs" />
+    <Compile Include="Protocols\Commons\Enumerators.cs" />
+    <Compile Include="Protocols\Commons\Exceptions.cs" />
+    <Compile Include="Protocols\Commons\Exports.cs" />
+    <Compile Include="Protocols\Commons\Groups.cs" />
+    <Compile Include="Protocols\Commons\INFS.cs" />
+    <Compile Include="Protocols\Commons\Name.cs" />
+    <Compile Include="Protocols\Commons\NFSAttributes.cs" />
+    <Compile Include="Protocols\Commons\NFSHandle.cs" />
+    <Compile Include="Protocols\Commons\NFSPermission.cs" />
+    <Compile Include="Protocols\Commons\NFSTimeValue.cs" />
+    <Compile Include="Protocols\V2\NFSv2.cs" />
+    <Compile Include="Protocols\V2\RPC\CreateArguments.cs" />
+    <Compile Include="Protocols\V2\RPC\Entry.cs" />
+    <Compile Include="Protocols\V2\RPC\FileArguments.cs" />
+    <Compile Include="Protocols\V2\RPC\FileAttributes.cs" />
+    <Compile Include="Protocols\V2\RPC\FileStatus.cs" />
+    <Compile Include="Protocols\V2\RPC\FSStatStatus.cs" />
+    <Compile Include="Protocols\V2\RPC\Info.cs" />
+    <Compile Include="Protocols\V2\RPC\ItemArguments.cs" />
+    <Compile Include="Protocols\V2\RPC\ItemOperationArguments.cs" />
+    <Compile Include="Protocols\V2\RPC\ItemOperationStatus.cs" />
+    <Compile Include="Protocols\V2\RPC\ItemStatus.cs" />
+    <Compile Include="Protocols\V2\RPC\LinkArguments.cs" />
+    <Compile Include="Protocols\V2\RPC\LinkStatus.cs" />
+    <Compile Include="Protocols\V2\RPC\Mount\MountList.cs" />
+    <Compile Include="Protocols\V2\RPC\Mount\MountStatus.cs" />
+    <Compile Include="Protocols\V2\RPC\Mount\NFSv2MountProtocol.cs" />
+    <Compile Include="Protocols\V2\RPC\Mount\NFSv2MountProtocolClient.cs" />
+    <Compile Include="Protocols\V2\RPC\Mount\NFSv2MountProtocolServerStub.cs" />
+    <Compile Include="Protocols\V2\RPC\NFSCookie.cs" />
+    <Compile Include="Protocols\V2\RPC\NFSv2Protocol.cs" />
+    <Compile Include="Protocols\V2\RPC\NFSv2ProtocolClient.cs" />
+    <Compile Include="Protocols\V2\RPC\NFSv2ProtocolServerStub.cs" />
+    <Compile Include="Protocols\V2\RPC\ReadArguments.cs" />
+    <Compile Include="Protocols\V2\RPC\ReadStatus.cs" />
+    <Compile Include="Protocols\V2\RPC\RenameArguments.cs" />
+    <Compile Include="Protocols\V2\RPC\SymlinkArguments.cs" />
+    <Compile Include="Protocols\V2\RPC\WriteArguments.cs" />
+    <Compile Include="Protocols\V3\NFSv3.cs" />
+    <Compile Include="Protocols\V3\RPC\AccessArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\AccessStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\CommitArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\CommitStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\Entry.cs" />
+    <Compile Include="Protocols\V3\RPC\ExtendedReadFolderArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\ExtendedReadFolderStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\FileAttributes.cs" />
+    <Compile Include="Protocols\V3\RPC\FSInfoArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\FSInfoStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\FSStatisticsArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\FSStatisticsStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\GetAttributeArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\GetAttributeStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\ItemOperationArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\ItemOperationStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\LinkArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\LinkStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\MakeAttributes.cs" />
+    <Compile Include="Protocols\V3\RPC\MakeFileArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\MakeFileStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\MakeFolderArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\MakeFolderStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\MakeNodeArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\MakeNodeStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\Mount\MountBody.cs" />
+    <Compile Include="Protocols\V3\RPC\Mount\MountList.cs" />
+    <Compile Include="Protocols\V3\RPC\Mount\MountStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\Mount\NFSv3MountProtocol.cs" />
+    <Compile Include="Protocols\V3\RPC\Mount\NFSv3MountProtocolClient.cs" />
+    <Compile Include="Protocols\V3\RPC\Mount\NFSv3MountProtocolServerStub.cs" />
+    <Compile Include="Protocols\V3\RPC\NFSCookie.cs" />
+    <Compile Include="Protocols\V3\RPC\NFSv3Protocol.cs" />
+    <Compile Include="Protocols\V3\RPC\NFSv3ProtocolClient.cs" />
+    <Compile Include="Protocols\V3\RPC\NFSv3ProtocolServerStub.cs" />
+    <Compile Include="Protocols\V3\RPC\PathConfigurationArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\PathConfigurationStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\PostOperationAttributes.cs" />
+    <Compile Include="Protocols\V3\RPC\PreOperationAttributes.cs" />
+    <Compile Include="Protocols\V3\RPC\ReadArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\ReadFolderArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\ReadFolderStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\ReadLinkArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\ReadLinkStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\ReadStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\RemoveStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\RenameArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\RenameStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\ResultObject.cs" />
+    <Compile Include="Protocols\V3\RPC\SetAttributeArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\SetAttributeStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\SpecInformation.cs" />
+    <Compile Include="Protocols\V3\RPC\SymlinkArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\SymlinkStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\WriteArguments.cs" />
+    <Compile Include="Protocols\V3\RPC\WriteStatus.cs" />
+    <Compile Include="Protocols\V3\RPC\WritingAttributes.cs" />
+    <Compile Include="Protocols\V3\RPC\WritingData.cs" />
+    <Compile Include="Protocols\V4\NFSv4.1.cs" />
+    <Compile Include="Protocols\V4\RPC\ACCESS4args.cs" />
+    <Compile Include="Protocols\V4\RPC\ACCESS4res.cs" />
+    <Compile Include="Protocols\V4\RPC\ACCESS4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\aceflag4.cs" />
+    <Compile Include="Protocols\V4\RPC\acemask4.cs" />
+    <Compile Include="Protocols\V4\RPC\acetype4.cs" />
+    <Compile Include="Protocols\V4\RPC\aclflag4.cs" />
+    <Compile Include="Protocols\V4\RPC\attrlist4.cs" />
+    <Compile Include="Protocols\V4\RPC\attr_notice4.cs" />
+    <Compile Include="Protocols\V4\RPC\authsys_parms.cs" />
+    <Compile Include="Protocols\V4\RPC\auth_flavor.cs" />
+    <Compile Include="Protocols\V4\RPC\BACKCHANNEL_CTL4args.cs" />
+    <Compile Include="Protocols\V4\RPC\BACKCHANNEL_CTL4res.cs" />
+    <Compile Include="Protocols\V4\RPC\BIND_CONN_TO_SESSION4args.cs" />
+    <Compile Include="Protocols\V4\RPC\BIND_CONN_TO_SESSION4res.cs" />
+    <Compile Include="Protocols\V4\RPC\BIND_CONN_TO_SESSION4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\bitmap4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_COMPOUND4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_COMPOUND4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_GETATTR4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_GETATTR4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_GETATTR4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_ILLEGAL4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_LAYOUTRECALL4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_LAYOUTRECALL4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_NOTIFY4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_NOTIFY4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_NOTIFY_DEVICEID4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_NOTIFY_DEVICEID4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_NOTIFY_LOCK4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_NOTIFY_LOCK4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_PUSH_DELEG4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_PUSH_DELEG4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_RECALL4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_RECALL4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_RECALLABLE_OBJ_AVAIL4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_RECALLABLE_OBJ_AVAIL4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_RECALL_ANY4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_RECALL_ANY4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_RECALL_SLOT4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_RECALL_SLOT4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_SEQUENCE4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_SEQUENCE4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_SEQUENCE4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_WANTS_CANCELLED4args.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\CB_WANTS_CANCELLED4res.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\layoutrecall4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\layoutrecall_file4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\layoutrecall_type4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\NFSv4_callback.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\NFSv4_callbackClient.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\NFSv4_callbackServerStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\nfs_cb_argop4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\nfs_cb_opnum4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\nfs_cb_resop4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notifylist4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify_add4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify_attr4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify_deviceid_change4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify_deviceid_delete4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify_deviceid_type4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify_entry4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify_remove4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify_rename4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify_type4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\notify_verifier4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\prev_entry4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\referring_call4.cs" />
+    <Compile Include="Protocols\V4\RPC\Callback\referring_call_list4.cs" />
+    <Compile Include="Protocols\V4\RPC\callback_sec_parms4.cs" />
+    <Compile Include="Protocols\V4\RPC\cb_client4.cs" />
+    <Compile Include="Protocols\V4\RPC\changeid4.cs" />
+    <Compile Include="Protocols\V4\RPC\change_info4.cs" />
+    <Compile Include="Protocols\V4\RPC\change_policy4.cs" />
+    <Compile Include="Protocols\V4\RPC\channel_attrs4.cs" />
+    <Compile Include="Protocols\V4\RPC\channel_dir_from_client4.cs" />
+    <Compile Include="Protocols\V4\RPC\channel_dir_from_server4.cs" />
+    <Compile Include="Protocols\V4\RPC\clientaddr4.cs" />
+    <Compile Include="Protocols\V4\RPC\clientid4.cs" />
+    <Compile Include="Protocols\V4\RPC\client_owner4.cs" />
+    <Compile Include="Protocols\V4\RPC\CLOSE4args.cs" />
+    <Compile Include="Protocols\V4\RPC\CLOSE4res.cs" />
+    <Compile Include="Protocols\V4\RPC\COMMIT4args.cs" />
+    <Compile Include="Protocols\V4\RPC\COMMIT4res.cs" />
+    <Compile Include="Protocols\V4\RPC\COMMIT4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\component4.cs" />
+    <Compile Include="Protocols\V4\RPC\COMPOUND4args.cs" />
+    <Compile Include="Protocols\V4\RPC\COMPOUND4res.cs" />
+    <Compile Include="Protocols\V4\RPC\count4.cs" />
+    <Compile Include="Protocols\V4\RPC\CREATE4args.cs" />
+    <Compile Include="Protocols\V4\RPC\CREATE4res.cs" />
+    <Compile Include="Protocols\V4\RPC\CREATE4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\createhow4.cs" />
+    <Compile Include="Protocols\V4\RPC\createmode4.cs" />
+    <Compile Include="Protocols\V4\RPC\createtype4.cs" />
+    <Compile Include="Protocols\V4\RPC\CREATE_SESSION4args.cs" />
+    <Compile Include="Protocols\V4\RPC\CREATE_SESSION4res.cs" />
+    <Compile Include="Protocols\V4\RPC\CREATE_SESSION4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\creatverfattr.cs" />
+    <Compile Include="Protocols\V4\RPC\DELEGPURGE4args.cs" />
+    <Compile Include="Protocols\V4\RPC\DELEGPURGE4res.cs" />
+    <Compile Include="Protocols\V4\RPC\DELEGRETURN4args.cs" />
+    <Compile Include="Protocols\V4\RPC\DELEGRETURN4res.cs" />
+    <Compile Include="Protocols\V4\RPC\deleg_claim4.cs" />
+    <Compile Include="Protocols\V4\RPC\DESTROY_CLIENTID4args.cs" />
+    <Compile Include="Protocols\V4\RPC\DESTROY_CLIENTID4res.cs" />
+    <Compile Include="Protocols\V4\RPC\DESTROY_SESSION4args.cs" />
+    <Compile Include="Protocols\V4\RPC\DESTROY_SESSION4res.cs" />
+    <Compile Include="Protocols\V4\RPC\deviceid4.cs" />
+    <Compile Include="Protocols\V4\RPC\device_addr4.cs" />
+    <Compile Include="Protocols\V4\RPC\dirlist4.cs" />
+    <Compile Include="Protocols\V4\RPC\entry4.cs" />
+    <Compile Include="Protocols\V4\RPC\EXCHANGE_ID4args.cs" />
+    <Compile Include="Protocols\V4\RPC\EXCHANGE_ID4res.cs" />
+    <Compile Include="Protocols\V4\RPC\EXCHANGE_ID4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\exist_lock_owner4.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_acl.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_aclsupport.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_archive.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_cansettime.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_case_insensitive.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_case_preserving.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_change.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_change_policy.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_chown_restricted.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_dacl.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_dirent_notif_delay.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_dir_notif_delay.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_fh_expire_type.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_filehandle.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_fileid.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_files_avail.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_files_free.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_files_total.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_fsid.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_fs_charset_cap.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_fs_layout_types.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_fs_locations.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_fs_locations_info.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_fs_status.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_hidden.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_homogeneous.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_layout_alignment.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_layout_blksize.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_layout_hint.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_layout_types.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_lease_time.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_link_support.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_maxfilesize.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_maxlink.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_maxname.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_maxread.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_maxwrite.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_mdsthreshold.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_mimetype.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_mode.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_mode_set_masked.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_mounted_on_fileid.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_named_attr.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_no_trunc.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_numlinks.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_owner.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_owner_group.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_quota_avail_hard.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_quota_avail_soft.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_quota_used.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_rawdev.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_rdattr_error.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_retentevt_get.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_retentevt_set.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_retention_get.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_retention_hold.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_retention_set.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_sacl.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_size.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_space_avail.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_space_free.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_space_total.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_space_used.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_suppattr_exclcreat.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_supported_attrs.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_symlink_support.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_system.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_time_access.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_time_access_set.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_time_backup.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_time_create.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_time_delta.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_time_metadata.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_time_modify.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_time_modify_set.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_type.cs" />
+    <Compile Include="Protocols\V4\RPC\fattr4_unique_handles.cs" />
+    <Compile Include="Protocols\V4\RPC\filelayout_hint_care4.cs" />
+    <Compile Include="Protocols\V4\RPC\FREE_STATEID4args.cs" />
+    <Compile Include="Protocols\V4\RPC\FREE_STATEID4res.cs" />
+    <Compile Include="Protocols\V4\RPC\fs4_status.cs" />
+    <Compile Include="Protocols\V4\RPC\fs4_status_type.cs" />
+    <Compile Include="Protocols\V4\RPC\fsid4.cs" />
+    <Compile Include="Protocols\V4\RPC\fs_charset_cap4.cs" />
+    <Compile Include="Protocols\V4\RPC\fs_location4.cs" />
+    <Compile Include="Protocols\V4\RPC\fs_locations4.cs" />
+    <Compile Include="Protocols\V4\RPC\fs_locations_info4.cs" />
+    <Compile Include="Protocols\V4\RPC\fs_locations_item4.cs" />
+    <Compile Include="Protocols\V4\RPC\fs_locations_server4.cs" />
+    <Compile Include="Protocols\V4\RPC\gddrnf4_status.cs" />
+    <Compile Include="Protocols\V4\RPC\GETATTR4args.cs" />
+    <Compile Include="Protocols\V4\RPC\GETATTR4res.cs" />
+    <Compile Include="Protocols\V4\RPC\GETATTR4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\GETDEVICEINFO4args.cs" />
+    <Compile Include="Protocols\V4\RPC\GETDEVICEINFO4res.cs" />
+    <Compile Include="Protocols\V4\RPC\GETDEVICEINFO4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\GETDEVICELIST4args.cs" />
+    <Compile Include="Protocols\V4\RPC\GETDEVICELIST4res.cs" />
+    <Compile Include="Protocols\V4\RPC\GETDEVICELIST4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\GETFH4res.cs" />
+    <Compile Include="Protocols\V4\RPC\GETFH4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\GET_DIR_DELEGATION4args.cs" />
+    <Compile Include="Protocols\V4\RPC\GET_DIR_DELEGATION4res.cs" />
+    <Compile Include="Protocols\V4\RPC\GET_DIR_DELEGATION4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\GET_DIR_DELEGATION4res_non_fatal.cs" />
+    <Compile Include="Protocols\V4\RPC\gsshandle4_t.cs" />
+    <Compile Include="Protocols\V4\RPC\gss_cb_handles4.cs" />
+    <Compile Include="Protocols\V4\RPC\ILLEGAL4res.cs" />
+    <Compile Include="Protocols\V4\RPC\int64_t.cs" />
+    <Compile Include="Protocols\V4\RPC\layout4.cs" />
+    <Compile Include="Protocols\V4\RPC\LAYOUTCOMMIT4args.cs" />
+    <Compile Include="Protocols\V4\RPC\LAYOUTCOMMIT4res.cs" />
+    <Compile Include="Protocols\V4\RPC\LAYOUTCOMMIT4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\LAYOUTGET4args.cs" />
+    <Compile Include="Protocols\V4\RPC\LAYOUTGET4res.cs" />
+    <Compile Include="Protocols\V4\RPC\LAYOUTGET4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\layouthint4.cs" />
+    <Compile Include="Protocols\V4\RPC\layoutiomode4.cs" />
+    <Compile Include="Protocols\V4\RPC\layoutreturn4.cs" />
+    <Compile Include="Protocols\V4\RPC\LAYOUTRETURN4args.cs" />
+    <Compile Include="Protocols\V4\RPC\LAYOUTRETURN4res.cs" />
+    <Compile Include="Protocols\V4\RPC\layoutreturn_file4.cs" />
+    <Compile Include="Protocols\V4\RPC\layoutreturn_stateid.cs" />
+    <Compile Include="Protocols\V4\RPC\layoutreturn_type4.cs" />
+    <Compile Include="Protocols\V4\RPC\layouttype4.cs" />
+    <Compile Include="Protocols\V4\RPC\layoutupdate4.cs" />
+    <Compile Include="Protocols\V4\RPC\layout_content4.cs" />
+    <Compile Include="Protocols\V4\RPC\length4.cs" />
+    <Compile Include="Protocols\V4\RPC\limit_by4.cs" />
+    <Compile Include="Protocols\V4\RPC\LINK4args.cs" />
+    <Compile Include="Protocols\V4\RPC\LINK4res.cs" />
+    <Compile Include="Protocols\V4\RPC\LINK4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\linktext4.cs" />
+    <Compile Include="Protocols\V4\RPC\LOCK4args.cs" />
+    <Compile Include="Protocols\V4\RPC\LOCK4denied.cs" />
+    <Compile Include="Protocols\V4\RPC\LOCK4res.cs" />
+    <Compile Include="Protocols\V4\RPC\LOCK4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\locker4.cs" />
+    <Compile Include="Protocols\V4\RPC\LOCKT4args.cs" />
+    <Compile Include="Protocols\V4\RPC\LOCKT4res.cs" />
+    <Compile Include="Protocols\V4\RPC\LOCKU4args.cs" />
+    <Compile Include="Protocols\V4\RPC\LOCKU4res.cs" />
+    <Compile Include="Protocols\V4\RPC\lock_owner4.cs" />
+    <Compile Include="Protocols\V4\RPC\LOOKUP4args.cs" />
+    <Compile Include="Protocols\V4\RPC\LOOKUP4res.cs" />
+    <Compile Include="Protocols\V4\RPC\LOOKUPP4res.cs" />
+    <Compile Include="Protocols\V4\RPC\mdsthreshold4.cs" />
+    <Compile Include="Protocols\V4\RPC\mode4.cs" />
+    <Compile Include="Protocols\V4\RPC\mode_masked4.cs" />
+    <Compile Include="Protocols\V4\RPC\multipath_list4.cs" />
+    <Compile Include="Protocols\V4\RPC\netaddr4.cs" />
+    <Compile Include="Protocols\V4\RPC\newoffset4.cs" />
+    <Compile Include="Protocols\V4\RPC\newsize4.cs" />
+    <Compile Include="Protocols\V4\RPC\newtime4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfl_util4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfsace4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfsacl41.cs" />
+    <Compile Include="Protocols\V4\RPC\nfsstat4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfstime4.cs" />
+    <Compile Include="Protocols\V4\RPC\NFSv4Protocol.cs" />
+    <Compile Include="Protocols\V4\RPC\NFSv4ProtocolClient.cs" />
+    <Compile Include="Protocols\V4\RPC\NFSv4ProtocolServerStub.cs" />
+    <Compile Include="Protocols\V4\RPC\nfsv4_1_file_layout4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfsv4_1_file_layouthint4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfsv4_1_file_layout_ds_addr4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_argop4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_client_id4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_cookie4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_fh4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_ftype4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_impl_id4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_lease4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_lock_type4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_modified_limit4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_opnum4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_resop4.cs" />
+    <Compile Include="Protocols\V4\RPC\nfs_space_limit4.cs" />
+    <Compile Include="Protocols\V4\RPC\NVERIFY4args.cs" />
+    <Compile Include="Protocols\V4\RPC\NVERIFY4res.cs" />
+    <Compile Include="Protocols\V4\RPC\offset4.cs" />
+    <Compile Include="Protocols\V4\RPC\OPEN4args.cs" />
+    <Compile Include="Protocols\V4\RPC\OPEN4res.cs" />
+    <Compile Include="Protocols\V4\RPC\OPEN4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\OPENATTR4args.cs" />
+    <Compile Include="Protocols\V4\RPC\OPENATTR4res.cs" />
+    <Compile Include="Protocols\V4\RPC\openflag4.cs" />
+    <Compile Include="Protocols\V4\RPC\opentype4.cs" />
+    <Compile Include="Protocols\V4\RPC\open_claim4.cs" />
+    <Compile Include="Protocols\V4\RPC\open_claim_delegate_cur4.cs" />
+    <Compile Include="Protocols\V4\RPC\open_claim_type4.cs" />
+    <Compile Include="Protocols\V4\RPC\OPEN_CONFIRM4args.cs" />
+    <Compile Include="Protocols\V4\RPC\OPEN_CONFIRM4res.cs" />
+    <Compile Include="Protocols\V4\RPC\OPEN_CONFIRM4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\open_delegation4.cs" />
+    <Compile Include="Protocols\V4\RPC\open_delegation_type4.cs" />
+    <Compile Include="Protocols\V4\RPC\OPEN_DOWNGRADE4args.cs" />
+    <Compile Include="Protocols\V4\RPC\OPEN_DOWNGRADE4res.cs" />
+    <Compile Include="Protocols\V4\RPC\OPEN_DOWNGRADE4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\open_none_delegation4.cs" />
+    <Compile Include="Protocols\V4\RPC\open_owner4.cs" />
+    <Compile Include="Protocols\V4\RPC\open_read_delegation4.cs" />
+    <Compile Include="Protocols\V4\RPC\open_to_lock_owner4.cs" />
+    <Compile Include="Protocols\V4\RPC\open_write_delegation4.cs" />
+    <Compile Include="Protocols\V4\RPC\pathname4.cs" />
+    <Compile Include="Protocols\V4\RPC\PUTFH4args.cs" />
+    <Compile Include="Protocols\V4\RPC\PUTFH4res.cs" />
+    <Compile Include="Protocols\V4\RPC\PUTPUBFH4res.cs" />
+    <Compile Include="Protocols\V4\RPC\PUTROOTFH4res.cs" />
+    <Compile Include="Protocols\V4\RPC\qop4.cs" />
+    <Compile Include="Protocols\V4\RPC\READ4args.cs" />
+    <Compile Include="Protocols\V4\RPC\READ4res.cs" />
+    <Compile Include="Protocols\V4\RPC\READ4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\READDIR4args.cs" />
+    <Compile Include="Protocols\V4\RPC\READDIR4res.cs" />
+    <Compile Include="Protocols\V4\RPC\READDIR4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\READLINK4res.cs" />
+    <Compile Include="Protocols\V4\RPC\READLINK4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\RECLAIM_COMPLETE4args.cs" />
+    <Compile Include="Protocols\V4\RPC\RECLAIM_COMPLETE4res.cs" />
+    <Compile Include="Protocols\V4\RPC\RELEASE_LOCKOWNER4args.cs" />
+    <Compile Include="Protocols\V4\RPC\RELEASE_LOCKOWNER4res.cs" />
+    <Compile Include="Protocols\V4\RPC\REMOVE4args.cs" />
+    <Compile Include="Protocols\V4\RPC\REMOVE4res.cs" />
+    <Compile Include="Protocols\V4\RPC\REMOVE4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\RENAME4args.cs" />
+    <Compile Include="Protocols\V4\RPC\RENAME4res.cs" />
+    <Compile Include="Protocols\V4\RPC\RENAME4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\RENEW4args.cs" />
+    <Compile Include="Protocols\V4\RPC\RENEW4res.cs" />
+    <Compile Include="Protocols\V4\RPC\RESTOREFH4res.cs" />
+    <Compile Include="Protocols\V4\RPC\retention_get4.cs" />
+    <Compile Include="Protocols\V4\RPC\retention_set4.cs" />
+    <Compile Include="Protocols\V4\RPC\rpcsec_gss_info.cs" />
+    <Compile Include="Protocols\V4\RPC\rpc_gss_svc_t.cs" />
+    <Compile Include="Protocols\V4\RPC\SAVEFH4res.cs" />
+    <Compile Include="Protocols\V4\RPC\secinfo4.cs" />
+    <Compile Include="Protocols\V4\RPC\SECINFO4args.cs" />
+    <Compile Include="Protocols\V4\RPC\SECINFO4res.cs" />
+    <Compile Include="Protocols\V4\RPC\SECINFO4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\SECINFO_NO_NAME4args.cs" />
+    <Compile Include="Protocols\V4\RPC\SECINFO_NO_NAME4res.cs" />
+    <Compile Include="Protocols\V4\RPC\secinfo_style4.cs" />
+    <Compile Include="Protocols\V4\RPC\sec_oid4.cs" />
+    <Compile Include="Protocols\V4\RPC\seqid4.cs" />
+    <Compile Include="Protocols\V4\RPC\SEQUENCE4args.cs" />
+    <Compile Include="Protocols\V4\RPC\SEQUENCE4res.cs" />
+    <Compile Include="Protocols\V4\RPC\SEQUENCE4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\sequenceid4.cs" />
+    <Compile Include="Protocols\V4\RPC\server_owner4.cs" />
+    <Compile Include="Protocols\V4\RPC\sessionid4.cs" />
+    <Compile Include="Protocols\V4\RPC\SETATTR4args.cs" />
+    <Compile Include="Protocols\V4\RPC\SETATTR4res.cs" />
+    <Compile Include="Protocols\V4\RPC\SETCLIENTID4args.cs" />
+    <Compile Include="Protocols\V4\RPC\SETCLIENTID4res.cs" />
+    <Compile Include="Protocols\V4\RPC\SETCLIENTID4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\SETCLIENTID_CONFIRM4args.cs" />
+    <Compile Include="Protocols\V4\RPC\SETCLIENTID_CONFIRM4res.cs" />
+    <Compile Include="Protocols\V4\RPC\settime4.cs" />
+    <Compile Include="Protocols\V4\RPC\SET_SSV4args.cs" />
+    <Compile Include="Protocols\V4\RPC\SET_SSV4res.cs" />
+    <Compile Include="Protocols\V4\RPC\SET_SSV4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\slotid4.cs" />
+    <Compile Include="Protocols\V4\RPC\specdata4.cs" />
+    <Compile Include="Protocols\V4\RPC\ssa_digest_input4.cs" />
+    <Compile Include="Protocols\V4\RPC\ssr_digest_input4.cs" />
+    <Compile Include="Protocols\V4\RPC\ssv_mic_plain_tkn4.cs" />
+    <Compile Include="Protocols\V4\RPC\ssv_mic_tkn4.cs" />
+    <Compile Include="Protocols\V4\RPC\ssv_prot_info4.cs" />
+    <Compile Include="Protocols\V4\RPC\ssv_seal_cipher_tkn4.cs" />
+    <Compile Include="Protocols\V4\RPC\ssv_seal_plain_tkn4.cs" />
+    <Compile Include="Protocols\V4\RPC\ssv_sp_parms4.cs" />
+    <Compile Include="Protocols\V4\RPC\ssv_subkey4.cs" />
+    <Compile Include="Protocols\V4\RPC\stable_how4.cs" />
+    <Compile Include="Protocols\V4\RPC\stateid4.cs" />
+    <Compile Include="Protocols\V4\RPC\state_owner4.cs" />
+    <Compile Include="Protocols\V4\RPC\state_protect4_a.cs" />
+    <Compile Include="Protocols\V4\RPC\state_protect4_r.cs" />
+    <Compile Include="Protocols\V4\RPC\state_protect_how4.cs" />
+    <Compile Include="Protocols\V4\RPC\state_protect_ops4.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\AcessStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\LookupStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\OpenStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\PutfhStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\ReadDirStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\ReadStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\ReclaimCompleteStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\DestroyClientIdStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\CreateSessionStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\DestroySessionStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\ExchengeIDStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\GetattrStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\GetfhStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\PutrootfhStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\RemoveStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\SequenceStub.cs" />
+    <Compile Include="Protocols\V4\RPC\Stubs\WriteStub.cs" />
+    <Compile Include="Protocols\V4\RPC\TEST_STATEID4args.cs" />
+    <Compile Include="Protocols\V4\RPC\TEST_STATEID4res.cs" />
+    <Compile Include="Protocols\V4\RPC\TEST_STATEID4resok.cs" />
+    <Compile Include="Protocols\V4\RPC\threshold4_read_iosize.cs" />
+    <Compile Include="Protocols\V4\RPC\threshold4_read_size.cs" />
+    <Compile Include="Protocols\V4\RPC\threshold4_write_iosize.cs" />
+    <Compile Include="Protocols\V4\RPC\threshold4_write_size.cs" />
+    <Compile Include="Protocols\V4\RPC\threshold_item4.cs" />
+    <Compile Include="Protocols\V4\RPC\time_how4.cs" />
+    <Compile Include="Protocols\V4\RPC\uint32_t.cs" />
+    <Compile Include="Protocols\V4\RPC\uint64_t.cs" />
+    <Compile Include="Protocols\V4\RPC\utf8string.cs" />
+    <Compile Include="Protocols\V4\RPC\utf8str_cis.cs" />
+    <Compile Include="Protocols\V4\RPC\utf8str_cs.cs" />
+    <Compile Include="Protocols\V4\RPC\utf8str_mixed.cs" />
+    <Compile Include="Protocols\V4\RPC\verifier4.cs" />
+    <Compile Include="Protocols\V4\RPC\VERIFY4args.cs" />
+    <Compile Include="Protocols\V4\RPC\VERIFY4res.cs" />
+    <Compile Include="Protocols\V4\RPC\WANT_DELEGATION4args.cs" />
+    <Compile Include="Protocols\V4\RPC\WANT_DELEGATION4res.cs" />
+    <Compile Include="Protocols\V4\RPC\why_no_delegation4.cs" />
+    <Compile Include="Protocols\V4\RPC\WRITE4args.cs" />
+    <Compile Include="Protocols\V4\RPC\WRITE4res.cs" />
+    <Compile Include="Protocols\V4\RPC\WRITE4resok.cs" />
+    <Compile Include="Rewrite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rewrite.Designer.cs">
+      <DependentUpon>Rewrite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RPC\org\acplt\oncrpc\apps\jportmap\jportmap.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\apps\jportmap\OncRpcEmbeddedPortmap.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcAcceptStatus.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcAuthConstants.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcAuthenticationException.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcAuthStatus.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcAuthType.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcBroadcastAdapter.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcBroadcastEvent.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcBroadcastListener.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcCallMessage.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcClient.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcClientAuth.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcClientAuthNone.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcClientAuthUnix.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcClientCallMessage.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcClientReplyMessage.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcClientStub.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcConstants.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcDumpResult.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcException.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcGetPortResult.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcMessage.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcMessageType.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcPortmapClient.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcPortmapServices.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcProgramNotRegisteredException.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcProtocols.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcRejectStatus.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcReplyMessage.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcReplyStatus.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcServerIdent.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcTcpClient.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcTimeoutException.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcUdpClient.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\OncRpcUdpRetransmissionMode.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcCallInformation.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcDispatchable.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcServerAcceptedCallMessage.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcServerAuth.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcServerAuthNone.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcServerAuthShort.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcServerAuthUnix.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcServerCallMessage.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcServerReplyMessage.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcServerStub.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcServerTransport.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcServerTransportRegistrationInfo.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcTcpConnectionServerTransport.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcTcpServerTransport.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\server\OncRpcUdpServerTransport.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\web\Base64.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrAble.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrBoolean.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrBufferDecodingStream.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrBufferEncodingStream.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrByte.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrBytes.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrChar.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrDecodingStream.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrDouble.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrDynamicOpaque.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrEncodingStream.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrFloat.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrInt.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrLong.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrOpaque.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrShort.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrString.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrTcpDecodingStream.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrTcpEncodingStream.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrUdpDecodingStream.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrUdpEncodingStream.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrUnion.cs" />
+    <Compile Include="RPC\org\acplt\oncrpc\XdrVoid.cs" />
+    <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddServer.resx">
+      <DependentUpon>AddServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Progress.resx">
+      <DependentUpon>Progress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewFolder.resx">
+      <DependentUpon>NewFolder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Rewrite.resx">
+      <DependentUpon>Rewrite.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NFS_Linux.ico" />
+    <None Include="Resources\NFS_Linux.gif" />
+    <None Include="Resources\copy_animated.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
