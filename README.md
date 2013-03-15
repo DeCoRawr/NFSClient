@@ -5,6 +5,10 @@ NFSClient is an application for Microsoft Windows. It's an client for NFS server
 
 It's written in C# language.
 
+## Look
+
+![Main Window of the application ](doc/imgs/MainWindow.jpg)
+
 
 ## Tested
 
