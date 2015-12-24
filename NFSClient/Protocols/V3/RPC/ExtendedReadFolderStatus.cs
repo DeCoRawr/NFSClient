@@ -3,7 +3,7 @@
  * jrpcgen is part of the "Remote Tea.Net" ONC/RPC package for C#
  * See http://remotetea.sourceforge.net for details
  */
-using NFSLibrary.Protocols.Commons;
+using NFSLibrary.Protocols.Commons; 
 using org.acplt.oncrpc;
 
 namespace NFSLibrary.Protocols.V3.RPC
@@ -162,7 +162,7 @@ namespace NFSLibrary.Protocols.V3.RPC
                 _this._name_attributes = new PostOperationAttributes(xdr);
                 _this._name_handle = new NFSHandle();
                 _this._name_handle.Version = V3.RPC.NFSv3Protocol.NFS_V3;
-                _this._name_handle.xdrDecode(xdr);
+                _this._name_handle = (xdr.xdrDecodeBoolean() ? new NFSHandle(xdr) : null);
                 _next = xdr.xdrDecodeBoolean() ? new FolderEntry() : null;
                 _this._nextentry = _next;
                 _this = _next;
