@@ -1185,6 +1185,12 @@ namespace NFSLibrary.Protocols.V4
             // 60 seconds
             return (GetGMTInMS() - _lastUpdate) > 59000;
         }
+        
+        // How is this done in V4?
+        public List<V3.RPC.FolderEntry> GetItemListEx(string DirectoryFullName)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

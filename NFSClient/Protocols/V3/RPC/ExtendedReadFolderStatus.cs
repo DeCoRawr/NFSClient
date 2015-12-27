@@ -160,9 +160,7 @@ namespace NFSLibrary.Protocols.V3.RPC
                 _this._name = new Name(xdr);
                 _this._cookie = new NFSCookie(xdr);
                 _this._name_attributes = new PostOperationAttributes(xdr);
-                _this._name_handle = new NFSHandle();
-                _this._name_handle.Version = V3.RPC.NFSv3Protocol.NFS_V3;
-                _this._name_handle = (xdr.xdrDecodeBoolean() ? new NFSHandle(xdr) : null);
+                _this._name_handle = (xdr.xdrDecodeBoolean() ? new NFSHandle(xdr, 3) : null);
                 _next = xdr.xdrDecodeBoolean() ? new FolderEntry() : null;
                 _this._nextentry = _next;
                 _this = _next;
