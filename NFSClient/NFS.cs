@@ -4,10 +4,9 @@ using NFSLibrary.Protocols;
 using NFSLibrary.Protocols.Commons;
 using NFSLibrary.Protocols.V2;
 using NFSLibrary.Protocols.V3;
-using NFSLibrary.Protocols.V4;
+using NFSLibrary.Protocols.V4; 
 using System.Runtime.InteropServices;
 using System.Net;
-using NFSLibrary.Protocols.V3.RPC;
 
 namespace NFSLibrary
 {
@@ -266,26 +265,6 @@ namespace NFSLibrary
                 ddotIdx = content.IndexOf("..");
                 if (ddotIdx > -1)
                     content.RemoveAt(ddotIdx);
-            }
-
-            return content;
-        }
-
-        /// <summary>
-        /// Get the items in a directory
-        /// </summary>
-        /// <param name="DirectoryFullName">Directory name (e.g. "directory\subdirectory" or "." for the root)</param>
-        /// <param name="ExcludeNavigationDots">When posted as true, return list will not contains "." and ".."</param>
-        /// <returns>A list of the items name</returns>
-        public List<FolderEntry> GetItemListEx(String DirectoryFullName, Boolean ExcludeNavigationDots)
-        {
-            DirectoryFullName = CorrectPath(DirectoryFullName);
-
-            System.Collections.Generic.List<FolderEntry> content = this._nfsInterface.GetItemListEx(DirectoryFullName);
-
-            if (ExcludeNavigationDots)
-            {
-                content.RemoveAll(f => f.Name.Value == "." || f.Name.Value == "..");
             }
 
             return content;

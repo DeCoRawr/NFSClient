@@ -233,64 +233,6 @@ namespace NFSLibrary.Protocols.V3
             return ItemsList;
         }
 
-        public List<FolderEntry> GetItemListEx(String DirectoryFullName)
-        {
-            if (_ProtocolV3 == null)
-            { throw new NFSConnectionException("NFS Client not connected!"); }
-
-            if (_MountProtocolV3 == null)
-            { throw new NFSMountConnectionException("NFS Device not connected!"); }
-
-            List<FolderEntry> ItemsList = new List<FolderEntry>();
-
-            NFSAttributes itemAttributes =
-                GetItemAttributes(DirectoryFullName);
-
-            if (itemAttributes != null)
-            {
-                ExtendedReadFolderArguments dpRdArgs = new ExtendedReadFolderArguments();
-
-                dpRdArgs.DirectoryLength = 8192;
-                dpRdArgs.MaximumLength = 8192;
-                dpRdArgs.Cookie = new NFSCookie(0);
-                dpRdArgs.CookieVerification = new byte[NFSv3Protocol.NFS3_COOKIEVERFSIZE];
-                dpRdArgs.Directory = new NFSHandle(itemAttributes.Handle, V3.RPC.NFSv3Protocol.NFS_V3);
-
-                ResultObject<ExtendedReadFolderAccessOK, ExtendedReadFolderAccessFAIL> pReadDirRes;
-
-                do
-                {
-                    pReadDirRes = _ProtocolV3.NFSPROC3_READDIRPLUS(dpRdArgs);
-
-                    if (pReadDirRes != null &&
-                        pReadDirRes.Status == NFSStats.NFS_OK)
-                    {
-                        FolderEntry pEntry = pReadDirRes.OK.Reply.Entries;
-
-                        Array.Copy(pReadDirRes.OK.CookieVerification, dpRdArgs.CookieVerification, NFSv3Protocol.NFS3_COOKIEVERFSIZE);
-                        while (pEntry != null)
-                        {
-                            ItemsList.Add(pEntry);
-                            dpRdArgs.Cookie = pEntry.Cookie;
-                            pEntry = pEntry.NextEntry;
-                        }
-                    }
-                    else
-                    {
-                        if (pReadDirRes == null)
-                        { throw new NFSGeneralException("NFSPROC3_READDIRPLUS: failure"); }
-
-                        if (pReadDirRes.Status != NFSStats.NFS_OK)
-                        { ExceptionHelpers.ThrowException(pReadDirRes.Status); }
-                    }
-                } while (pReadDirRes != null && !pReadDirRes.OK.Reply.EOF);
-            }
-            else
-            { ExceptionHelpers.ThrowException(NFSStats.NFSERR_NOENT); }
-
-            return ItemsList;
-        }
-
         public NFSAttributes GetItemAttributes(string ItemFullName, bool ThrowExceptionIfNotFound = true)
         {
             if (_ProtocolV3 == null)
@@ -667,5 +609,6 @@ namespace NFSLibrary.Protocols.V3
 
         #endregion
     }
+
 }
 

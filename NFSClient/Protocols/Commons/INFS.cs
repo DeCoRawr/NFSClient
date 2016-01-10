@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
-using NFSLibrary.Protocols.V3.RPC;
 
 namespace NFSLibrary.Protocols.Commons
 {
@@ -21,8 +20,6 @@ namespace NFSLibrary.Protocols.Commons
         void UnMountDevice();
 
         List<String> GetItemList(String DirectoryFullName);
-
-        List<FolderEntry> GetItemListEx(String DirectoryFullName);
 
         NFSAttributes GetItemAttributes(String ItemFullName, bool ThrowExceptionIfNotFound);
 

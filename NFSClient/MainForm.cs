@@ -14,8 +14,7 @@ using System.Net.Sockets;
 using System.IO;
 using Dokan;
 using System.Diagnostics;
-using NFSLibrary.Protocols.V3.RPC;
-using NFSLibrary.Protocols.Commons;
+
 
 namespace NFSClient
 {
@@ -403,7 +402,7 @@ namespace NFSClient
             if (!connected)
                 return;
             listViewRemote.Items.Clear();
-            List<FolderEntry> Items = nfsClient.GetItemListEx(RemoteFolder, false);
+            List<string> Items = nfsClient.GetItemList(RemoteFolder);
             bool big_folder = false;
             if (Items.Count > 500)
             {
@@ -423,26 +422,15 @@ namespace NFSClient
 
             List<ListViewItem> FilesList = new List<ListViewItem>();
             int i = 0;
-            foreach (FolderEntry Item in Items)
+            foreach (string Item in Items)
             {
                 i++;
-
-                // No need to make a seperate call to GetAttributes if the original list command was GetItemListEx (includes attributes)
-                //nfsClient.GetItemAttributes(nfsClient.Combine(Item, RemoteFolder));
-                NFSLibrary.Protocols.Commons.NFSAttributes nfsAttribute = new NFSAttributes(
-                                                                                    Item.Attributes.Attributes.CreateTime.Seconds,
-                                                                                    Item.Attributes.Attributes.LastAccessedTime.Seconds,
-                                                                                    Item.Attributes.Attributes.ModifiedTime.Seconds,
-                                                                                    Item.Attributes.Attributes.Type,
-                                                                                    Item.Attributes.Attributes.Mode,
-                                                                                    Item.Attributes.Attributes.Size,
-                                                                                    Item.Handle.Value);
-                
+                NFSLibrary.Protocols.Commons.NFSAttributes nfsAttribute = nfsClient.GetItemAttributes(nfsClient.Combine(Item, RemoteFolder));
                 if (nfsAttribute != null)
                 {
                     if (nfsAttribute.NFSType == NFSLibrary.Protocols.Commons.NFSItemTypes.NFDIR)
                     {
-                        ListViewItem lvi = new ListViewItem(new string[] { Item.Name.Value, nfsAttribute.Size.ToString(), nfsAttribute.Mode.ToString(), nfsAttribute.CreateDateTime.ToString() });
+                        ListViewItem lvi = new ListViewItem(new string[] { Item, nfsAttribute.Size.ToString(), nfsAttribute.Mode.ToString(), nfsAttribute.CreateDateTime.ToString() });
                         lvi.ImageIndex = 1;
                         listViewRemote.Items.Insert(folders, lvi);
                         folders++;
@@ -450,8 +438,8 @@ namespace NFSClient
                     else
                         if (nfsAttribute.NFSType == NFSLibrary.Protocols.Commons.NFSItemTypes.NFREG)
                         {
-                            ListViewItem lvi = new ListViewItem(new string[] { Item.Name.Value, nfsAttribute.Size.ToString(), nfsAttribute.Mode.ToString(), nfsAttribute.ModifiedDateTime.ToString(), nfsAttribute.LastAccessedDateTime.ToString() });
-                            if (Item.Name.Value == "..")
+                            ListViewItem lvi = new ListViewItem(new string[] { Item, nfsAttribute.Size.ToString(), nfsAttribute.Mode.ToString(), nfsAttribute.ModifiedDateTime.ToString(), nfsAttribute.LastAccessedDateTime.ToString() });
+                            if (Item == "..")
                                 continue;
 
                             lvi.ImageIndex = 0;
@@ -460,7 +448,7 @@ namespace NFSClient
                 }
                 else
                 {
-                    ListViewItem lvi = new ListViewItem(new string[] { Item.Name.Value, "", "" });
+                    ListViewItem lvi = new ListViewItem(new string[] { Item, "", "" });
                     lvi.ImageIndex = 1;
                     listViewRemote.Items.Add(lvi);
                 }

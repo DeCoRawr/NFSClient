@@ -24,12 +24,6 @@ namespace NFSLibrary.Protocols.Commons
         public NFSHandle(XdrDecodingStream xdr)
         { xdrDecode(xdr); }
 
-        public NFSHandle(XdrDecodingStream xdr, int version)
-        {
-            this._version = version;
-            xdrDecode(xdr);
-        }
-
         public void xdrEncode(XdrEncodingStream xdr)
         {
             switch (this._version)

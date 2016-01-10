@@ -628,12 +628,6 @@ namespace NFSLibrary.Protocols.V2
             _CurrentItem = string.Empty;
         }
 
-        // Is this possible in V2?
-        public List<V3.RPC.FolderEntry> GetItemListEx(string DirectoryFullName)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
     }
 }
