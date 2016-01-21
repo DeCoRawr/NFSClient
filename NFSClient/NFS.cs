@@ -318,7 +318,7 @@ namespace NFSLibrary
         /// <param name="DirectoryFullName">Directory full name</param>
         public void DeleteDirectory(String DirectoryFullName)
         {
-            DeleteDirectory(DirectoryFullName, false);
+            DeleteDirectory(DirectoryFullName, true);
         }
 
         /// <summary>
