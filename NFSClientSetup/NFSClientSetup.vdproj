@@ -1,4 +1,4 @@
-﻿"DeployProject"
+"DeployProject"
 {
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_776E5EF4AD4A4A3288A346DFDB49F03C"
+        "MsmKey" = "8:_0850456F111E4D88A3794B12CBC558F6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -56,6 +56,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
         "Release"
@@ -100,6 +108,20 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_E24FED598664489E9177D9D0F3CA3ACF"
+            {
+            "Name" = "8:DokanInstall_0.7.4.exe"
+            "Condition" = "8:"
+            "Object" = "8:_0850456F111E4D88A3794B12CBC558F6"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:/Install"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_E2B91372_6B56_4B3F_9B5C_42653ABFC4F8"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -123,10 +145,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_776E5EF4AD4A4A3288A346DFDB49F03C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0850456F111E4D88A3794B12CBC558F6"
             {
-            "SourcePath" = "8:..\\..\\..\\Desktop\\DokanInstall_0.6.0.exe"
-            "TargetName" = "8:DokanInstall_0.6.0.exe"
+            "SourcePath" = "8:..\\..\\DokanInstall_0.7.4.exe"
+            "TargetName" = "8:DokanInstall_0.7.4.exe"
             "Tag" = "8:"
             "Folder" = "8:_90B5188D2F7E45A8AF463259614289D5"
             "Condition" = "8:"
@@ -161,17 +183,6 @@
                 {
                 }
             }
-            "{1525181F-901A-416C-8A58-119130FE478E}:_A5912A5AAF1A433985E03C36AABEDC27"
-            {
-            "Name" = "8:#1916"
-            "AlwaysCreate" = "11:FALSE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Property" = "8:DesktopFolder"
-                "Folders"
-                {
-                }
-            }
             "{1525181F-901A-416C-8A58-119130FE478E}:_DADFC044A4144390BAE349C0A1C0EBE6"
             {
             "Name" = "8:#1919"
@@ -199,16 +210,16 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:NFS Client"
-        "ProductCode" = "8:{C2B8108C-730C-4403-A7F8-54666D954B79}"
-        "PackageCode" = "8:{ADE755E9-6CD7-4F8E-A0B7-54C96561F50B}"
+        "ProductCode" = "8:{43139112-D999-4D1E-A23F-4E2CD662C7BD}"
+        "PackageCode" = "8:{90E85CC8-2129-4735-9AE8-450631048FE7}"
         "UpgradeCode" = "8:{62ABF790-4399-4AE2-81FD-DE21EAFE5303}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "ProductVersion" = "8:1.0.1"
+        "Manufacturer" = "8:DeCoRawr"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:NFS Client"
@@ -320,6 +331,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E46517A92FE14EA4BA5C2B50E275ED63"
+            {
+            "Name" = "8:NFSClient"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:32512"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_E9027CFC241B409B84568BFF5884C366"
+            "Folder" = "8:_DADFC044A4144390BAE349C0A1C0EBE6"
+            "WorkingFolder" = "8:_90B5188D2F7E45A8AF463259614289D5"
+            "Icon" = "8:_E9027CFC241B409B84568BFF5884C366"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
